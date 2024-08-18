@@ -1,5 +1,5 @@
 
 
-export default function(){
-
+export const informationPage = () => {
+    
 }
