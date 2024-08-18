@@ -26,7 +26,7 @@ export const Homepage =() =>  {
         <div className='relative flex translate-y-6 transform'>
          <input 
           type="text" 
-          placeholder= 'City or state' className='text-md  w-[100%] pl-12 py-2  border-2 border-[#181B2C] rounded-lg  text-[#CACACA] bg-[#11131C] outline-none font-normal focus:border-[#31A9ED] transition-all'/>
+          placeholder= 'City or state' className='text-md  w-screen pl-12 py-1  border-2 border-[#181B2C] rounded-lg  text-[#CACACA] bg-[#11131C] outline-none font-normal focus:border-[#31A9ED] transition-all'/>
           <Search01Icon 
             className='absolute left-2 top-1/2 transform -translate-y-3'
             color='#CACACA'
