@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 } */
-body{
+/* body{
   height:100vh;
   color: white;
   display: flex;
@@ -13,7 +17,18 @@ body{
   background-color: #11131C;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-style: normal;}
+  font-style: normal;} */
+  body{
+    height:100vh;
+    color: white;
+    display: grid;
+    place-items: center;
+    background-color: #11131C;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    width: 100vw;
+  }
 
 /* .logo {
   height: 6em;
