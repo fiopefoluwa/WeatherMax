@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Cloud  from './Components/images/Cloud.png'
+import { MyButton } from './Components/button'
 import SearchIcon from './Components/images/Search.png'
 import './App.css'
 
@@ -22,6 +23,7 @@ function App() {
           <img src={SearchIcon} 
           width={15}
           alt="Search Icon" className='absolute left-2 top-1/2 transform -translate-y-1/2'/>
+          <MyButton textContent="Go"/>
         </div>
         <div className='translate-y-16 transform'>
           <div className='justify-center flex'>
