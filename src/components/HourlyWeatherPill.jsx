@@ -7,7 +7,7 @@ export default function HourlyWeatherPill({
 }) {
     return (
         <>
-            <div className="p-2 rounded-lg border-2 border-[#181B2C] bg-[#0F1017] flex flex-col justify-center items-center w-[160px] h-[160px] cursor-pointer flex-shrink-0">
+            <div className="p-2 rounded-lg border-2 border-[#181B2C] bg-[#0F1017] flex flex-col justify-center items-center w-[160px] h-[160px] cursor-pointer flex-shrink-0 transition-all hover:bg-[#31A9ED] hover:border-[#31A9ED] hover:w-[220px] group">
                 <img
                     src={weatherIcon}
                     alt={weatherIcon}
@@ -15,7 +15,7 @@ export default function HourlyWeatherPill({
                 />
                 <p className="py-2 flex justify-between gap-2 items-center">
                     <span>{temperature}°C</span>
-                    <span className="text-sm text-[#949AB5]">
+                    <span className="text-sm text-[#949AB5] group-hover:text-white">
                         {weatherType}
                     </span>
                 </p>
