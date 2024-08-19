@@ -78,7 +78,7 @@ export const Homepage = () => {
             .get(`${constants.API}&latitude=${lat}&longitude=${lng}`)
             .then((res) => {
                 const data = res['data'];
-                console.log(data);
+                console.log(data); // remove in prod
 
                 setWeatherData(data);
                 setIsFetching(false);
@@ -86,6 +86,7 @@ export const Homepage = () => {
             })
             .catch((err) => {
                 setIsError(true);
+                setIsFetching(false);
                 console.error(err);
             });
     };
@@ -131,7 +132,7 @@ export const Homepage = () => {
                             {suggestions.map((city, id) => (
                                 <li
                                     key={id}
-                                    className="font-normal cursor-pointer opacity-70 hover:opacity-100"
+                                    className="font-normal cursor-pointer opacity-70 hover:opacity-100 py-1"
                                     onClick={() =>
                                         handleSuggestionClick(city.name)
                                     }
@@ -144,7 +145,7 @@ export const Homepage = () => {
                 </div>
 
                 {/* DEFAULT STATE */}
-                {!isLoaded && (
+                {!(isLoaded || isFetching)  && (
                     <div className="py-4">
                         <div className="justify-center flex select-none">
                             <img
@@ -168,7 +169,7 @@ export const Homepage = () => {
 
                 {isError ? (
                     <h3 className="text-center font-normal py-2 text-red-300">
-                        Seems we can&apos;t weather info at this time.
+                        Seems we can&apos;t get weather info at this time.
                     </h3>
                 ) : (
                     isLoaded && (

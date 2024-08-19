@@ -36,6 +36,16 @@ const weatherData = {
 
 */
 
+/**
+ * WEATHER CODE REFERENCE
+ * Rain thunder >= 90
+ * Rain >= 80
+ * Snowy >= 70
+ * Light Rain >= 40
+ * Partly Cloudy >= 3
+ * Sunny => Default
+ */
+
 export default function WeatherStats({ location, weatherData }) {
     return (
         <div>
