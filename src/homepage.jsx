@@ -1,12 +1,8 @@
-import React from 'react'
-import { useState } from 'react'
-import { MyButton } from './Components/button'
+import { MyButton } from './components/button'
 import { Search01Icon } from 'hugeicons-react';
-import GreyCloudIcon from "./assets/GreyCloudIcon.svg"
+import GreyCloudIcon from "./assets/grey-cloud.svg"
 
 export const Homepage =() =>  {
-  const [count, setCount] = useState(0)
-
   return (
     <>
     <div className='w-full max-w-md p-4'>
