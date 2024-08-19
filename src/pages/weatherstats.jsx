@@ -1,5 +1,7 @@
 import CurrentWeather from '../components/CurrentWeather';
 import HourlyWeather from '../components/HourlyWeather';
+import DailyWeather from '../components/DailyWeather';
+
 /** 
 
 WEATHER RESPONSE INTERFACE: **DON'T UNCOMMENT
@@ -55,6 +57,7 @@ export default function WeatherStats({ location, weatherData }) {
                 weatherData={weatherData['current']}
             />
             <HourlyWeather weatherData={weatherData['hourly']} />
+            <DailyWeather/>
             <p className="text-[#949AB5] text-base text-center pt-8">
                 Built by Xero && Fiope
             </p>
