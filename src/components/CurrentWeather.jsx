@@ -20,6 +20,10 @@ export default function CurrentWeather() {
                 weatherIcon={`/weather/${weatherIcon}.svg`}
                 weatherStats={weatherStats}
             />
+            {/* ADD OTHERS HERE */}
+            <p className="text-[#949AB5] text-base text-center pt-8">
+                Built by Xero && Fiope
+            </p>
         </>
     );
 }
