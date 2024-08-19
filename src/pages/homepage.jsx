@@ -93,7 +93,7 @@ export const Homepage = () => {
 
     return (
         <>
-            <div className="max-w-lg mx-auto w-full p-4">
+            <div className="max-w-lg w-screen mx-auto p-4">
                 {/* HEADER */}
                 <div className="flex justify-center text-4xl font-semibold">
                     <p>Weather</p>

@@ -5,7 +5,7 @@ export default function HourlyWeather({ weatherData }) {
     const twelveHourlyForecast = [];
 
     // Build 12-hourly forecast
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 12; i++) {
         const iconPath = extractWeatherType(weatherData['weather_code'][i])[1];
         const hourStat = {
             weatherIcon: `/weather/${iconPath}.svg`,
@@ -16,13 +16,13 @@ export default function HourlyWeather({ weatherData }) {
         twelveHourlyForecast.push(hourStat);
     }
 
-    console.log(twelveHourlyForecast);
+    // DEBUG: console.log(twelveHourlyForecast);
 
     return (
         <>
-            <h2 className="text-xl font-bold py-6">Hourly Weather</h2>
+            <h2 className="text-xl font-bold py-6">12-Hour Forecast</h2>
             <section
-                className="max-w-lg w-full flex-nowrap overflow-scroll overflow-y-hidden overflow-x-auto flex gap-2 items-center"
+                className="max-w-lg w-full lg:w-[512px] flex-nowrap overflow-scroll overflow-y-hidden overflow-x-auto flex gap-2 items-center"
                 id="hourly-pills"
             >
                 {twelveHourlyForecast.map((stats, id) => (
@@ -31,6 +31,7 @@ export default function HourlyWeather({ weatherData }) {
                         weatherIcon={stats.weatherIcon}
                         isPresent={id == 0}
                         temperature={stats.temperature}
+                        time={stats.time.split('T')[1]}
                     />
                 ))}
             </section>
