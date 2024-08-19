@@ -7,13 +7,14 @@ import cities from '../data/cities.json';
 
 export const Homepage = () => {
     // Determines when to show weather stats
-    // eslint-disable-next-line no-unused-vars
+
     const [isLoaded, setIsLoaded] = useState(false);
     const [searchCity, setSearchCity] = useState('');
     const [suggestions, setSuggestions] = useState([]);
 
     // Suggest top cities
     const handleSearchChange = (ev) => {
+        setIsLoaded(false);
         const inputValue = ev.target.value;
         setSearchCity(inputValue);
 
@@ -35,7 +36,17 @@ export const Homepage = () => {
     const handleSuggestionClick = (cityName) => {
         console.log(cities.filter((city) => city.name == cityName)[0]);
         setSearchCity(cityName);
+        makeWeatherRequest();
+    };
+
+    const handleGoBtnClick = () => {
+        makeWeatherRequest();
+    };
+
+    const makeWeatherRequest = () => {
+        // TODO: Make API request
         setSuggestions([]);
+        setIsLoaded(true);
     };
 
     return (
@@ -67,7 +78,7 @@ export const Homepage = () => {
                             color="#CACACA"
                             size={20}
                         />
-                        <MyButton textContent="Go" />
+                        <MyButton textContent="Go" onClick={handleGoBtnClick} />
                     </div>
                 </div>
                 <div className="relative mt-2">
@@ -92,7 +103,9 @@ export const Homepage = () => {
                 </div>
 
                 {isLoaded ? (
-                    <WeatherStats />
+                    <WeatherStats currentWeather={{
+                        location: searchCity
+                    }} />
                 ) : (
                     <div className="py-4">
                         <div className="justify-center flex select-none">

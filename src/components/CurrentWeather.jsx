@@ -1,6 +1,6 @@
 import LargeWeatherCard from './LargeWeatherCard';
 
-export default function CurrentWeather() {
+export default function CurrentWeather({ location }) {
     const weatherType = 'Rainy';
     const weatherIcon = 'RainThunder';
     const weatherStats = [
@@ -14,7 +14,7 @@ export default function CurrentWeather() {
         <>
             <h2 className="text-xl font-bold pb-4">Current Weather</h2>
             <LargeWeatherCard
-                location="Lagos"
+                location={location}
                 temperature={23}
                 weatherType={weatherType}
                 weatherIcon={`/weather/${weatherIcon}.svg`}
