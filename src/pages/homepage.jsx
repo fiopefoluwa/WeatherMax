@@ -1,11 +1,17 @@
-import { MyButton } from './components/button';
+import { useState } from 'react';
+import { MyButton } from '../components/button';
 import { Search01Icon } from 'hugeicons-react';
-import GreyCloudIcon from './assets/grey-cloud.svg';
+import GreyCloudIcon from '../assets/grey-cloud.svg';
+import WeatherStats from './weatherstats';
 
 export const Homepage = () => {
+    // Determines when to show weather stats
+    // eslint-disable-next-line no-unused-vars
+    const [isLoaded, setIsLoaded] = useState(true);
+
     return (
         <>
-            <div className="w-full max-w-md p-4">
+            <div className="w-screen max-w-lg  p-4">
                 {/* HEADER */}
                 <div className="flex justify-center text-4xl font-semibold">
                     <p>Weather</p>
@@ -19,7 +25,7 @@ export const Homepage = () => {
 
                 {/* SEARCH BOX */}
                 <div className="relative">
-                    <div className="relative flex translate-y-6 transform">
+                    <div className="relative flex py-8 transform">
                         <input
                             type="text"
                             placeholder="City or state"
@@ -32,7 +38,12 @@ export const Homepage = () => {
                         />
                         <MyButton textContent="Go" />
                     </div>
-                    <div className="translate-y-14">
+                </div>
+
+                {isLoaded ? (
+                    <WeatherStats />
+                ) : (
+                    <div className="translate-y-16">
                         <div className="justify-center flex select-none">
                             <img
                                 src={GreyCloudIcon}
@@ -45,7 +56,7 @@ export const Homepage = () => {
                             <span>weather forecasts.</span>
                         </div>
                     </div>
-                </div>
+                )}
             </div>
         </>
     );
