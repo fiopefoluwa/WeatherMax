@@ -11,7 +11,7 @@ export default function CurrentWeather() {
                 location="Lagos"
                 temperature={23}
                 weatherType={weatherType}
-                weatherIcon={`../public/weather/${weatherIcon}.svg`}
+                weatherIcon={`/weather/${weatherIcon}.svg`}
             />
         </>
     );

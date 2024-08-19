@@ -17,17 +17,19 @@ export default function LargeWeatherCard({
             <p className="flex items-center justify-between">
                 {/* TEMP DEGREES */}
                 <p className="flex items-start gap-1">
-                    <h3 className="text-5xl font-bold">{temperature}</h3>
+                    <h3 className="text-3xl sm:text-5xl font-bold">
+                        {temperature}
+                    </h3>
                     <span className="text-[#31A9ED] text-2xl">°C</span>
                 </p>
 
                 {/* TEMP TYPE + ICON */}
                 <p className="flex items-center gap-4">
-                    <p className="text-4xl">{weatherType}</p>
+                    <p className="text-3xl sm:text-4xl">{weatherType}</p>
                     <img
                         src={weatherIcon}
                         alt={weatherType}
-                        className="w-[64px] h-[64px]"
+                        className="w-8 h-8 sm:w-16 sm:h-16"
                     />
                 </p>
             </p>
