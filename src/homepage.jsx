@@ -1,9 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { MyButton } from '../Components/button'
+import { MyButton } from './Components/button'
 import { Search01Icon } from 'hugeicons-react';
-import GreyCloudIcon from "../assets/GreyCloudIcon.svg"
+import GreyCloudIcon from "./assets/GreyCloudIcon.svg"
 
 export const Homepage =() =>  {
   const [count, setCount] = useState(0)
@@ -32,8 +31,7 @@ export const Homepage =() =>  {
             color='#CACACA'
             size={20}
             />
-          <Link to = "/spage">
-          <MyButton textContent="Go" /></Link>
+          <MyButton textContent="Go" />
         </div>
         <div className='translate-y-14'>
            <div className='justify-center flex select-none'>
