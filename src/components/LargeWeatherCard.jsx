@@ -7,7 +7,6 @@ export default function LargeWeatherCard({
     weatherIcon,
     weatherStats,
 }) {
-    console.log(weatherStats);
     return (
         <section className="bg-[#0F1017] p-4 border-2 border-[#181B2C] flex gap-4 rounded-xl flex-col cursor-default">
             {/* LOCATION MARKER */}

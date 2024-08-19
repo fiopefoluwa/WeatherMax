@@ -4,17 +4,24 @@ import { Search01Icon } from 'hugeicons-react';
 import GreyCloudIcon from '../assets/grey-cloud.svg';
 import WeatherStats from './weatherstats';
 import cities from '../data/cities.json';
+import axios from 'axios';
+import constants from '../shared/constants';
 
 export const Homepage = () => {
     // Determines when to show weather stats
-
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isFetching, setIsFetching] = useState(false);
+    const [isError, setIsError] = useState(false);
     const [searchCity, setSearchCity] = useState('');
     const [suggestions, setSuggestions] = useState([]);
+    const [weatherData, setWeatherData] = useState(null);
 
     // Suggest top cities
     const handleSearchChange = (ev) => {
         setIsLoaded(false);
+        setIsFetching(false);
+        setIsError(false);
+
         const inputValue = ev.target.value;
         setSearchCity(inputValue);
 
@@ -33,20 +40,54 @@ export const Homepage = () => {
         }
     };
 
+    // Set city name, extract latitude and longitude then make request
     const handleSuggestionClick = (cityName) => {
-        console.log(cities.filter((city) => city.name == cityName)[0]);
         setSearchCity(cityName);
-        makeWeatherRequest();
+        const { lat, lng } = extractCoordinates(cityName);
+        if (lat && lng) makeWeatherRequest(lat, lng);
+        else setIsError(true);
     };
 
+    // Extract latitude and longitude then make request
     const handleGoBtnClick = () => {
-        makeWeatherRequest();
+        const { lat, lng } = extractCoordinates(searchCity);
+        if (lat && lng) makeWeatherRequest(lat, lng);
+        else setIsError(true);
     };
 
-    const makeWeatherRequest = () => {
-        // TODO: Make API request
+    // Extract coordinates and return them
+    const extractCoordinates = (location) => {
+        try {
+            const { lat, lng } = cities.find(
+                (city) => city.name.toLowerCase() == location.toLowerCase()
+            );
+            return { lat, lng };
+        } catch (err) {
+            setIsError(true);
+            console.error(err);
+        }
+    };
+
+    // Fetch weather data
+    const makeWeatherRequest = async (lat, lng) => {
+        setIsFetching(true);
         setSuggestions([]);
-        setIsLoaded(true);
+        setIsError(false);
+
+        await axios
+            .get(`${constants.API}&latitude=${lat}&longitude=${lng}`)
+            .then((res) => {
+                const data = res['data'];
+                console.log(data);
+
+                setWeatherData(data);
+                setIsFetching(false);
+                setIsLoaded(true);
+            })
+            .catch((err) => {
+                setIsError(true);
+                console.error(err);
+            });
     };
 
     return (
@@ -102,11 +143,8 @@ export const Homepage = () => {
                     )}
                 </div>
 
-                {isLoaded ? (
-                    <WeatherStats currentWeather={{
-                        location: searchCity
-                    }} />
-                ) : (
+                {/* DEFAULT STATE */}
+                {!isLoaded && (
                     <div className="py-4">
                         <div className="justify-center flex select-none">
                             <img
@@ -120,6 +158,25 @@ export const Homepage = () => {
                             <span>weather forecasts.</span>
                         </div>
                     </div>
+                )}
+
+                {isFetching && (
+                    <h3 className="text-center font-normal py-2 text-[#7E839A]">
+                        Getting forecast...
+                    </h3>
+                )}
+
+                {isError ? (
+                    <h3 className="text-center font-normal py-2 text-red-300">
+                        Seems we can&apos;t weather info at this time.
+                    </h3>
+                ) : (
+                    isLoaded && (
+                        <WeatherStats
+                            location={searchCity}
+                            weatherData={weatherData}
+                        />
+                    )
                 )}
             </div>
         </>

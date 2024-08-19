@@ -1,13 +1,14 @@
 import LargeWeatherCard from './LargeWeatherCard';
 
-export default function CurrentWeather({ location }) {
+export default function CurrentWeather({ location, weatherData }) {
     const weatherType = 'Rainy';
     const weatherIcon = 'RainThunder';
+    const temperature = weatherData['temperature_2m'];
     const weatherStats = [
-        { title: 'Humidity', value: '80%' },
-        { title: 'Precipitation', value: '5.1ml' },
-        { title: 'Pressure', value: '450hPa' },
-        { title: 'Wind', value: '23m/s' },
+        { title: 'Humidity', value: `${weatherData['relative_humidity_2m']}%` },
+        { title: 'Precipitation', value: `${weatherData['precipitation']}ml` },
+        { title: 'Pressure', value: `${weatherData['pressure_msl']}hPa` },
+        { title: 'Wind', value: `${weatherData['wind_speed_10m']}m/s` },
     ];
 
     return (
@@ -15,7 +16,7 @@ export default function CurrentWeather({ location }) {
             <h2 className="text-xl font-bold pb-4">Current Weather</h2>
             <LargeWeatherCard
                 location={location}
-                temperature={23}
+                temperature={temperature}
                 weatherType={weatherType}
                 weatherIcon={`/weather/${weatherIcon}.svg`}
                 weatherStats={weatherStats}
