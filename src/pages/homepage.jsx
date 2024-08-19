@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MyButton } from '../components/button';
+import { MyButton } from '../components/Button';
 import { Search01Icon } from 'hugeicons-react';
 import GreyCloudIcon from '../assets/grey-cloud.svg';
 import WeatherStats from './weatherstats';
@@ -29,7 +29,7 @@ export const Homepage = () => {
                         <input
                             type="text"
                             placeholder="City or state"
-                            className="text-md  w-screen px-10 py-1  border-2 border-[#181B2C] rounded-lg  text-[#CACACA] bg-[#11131C] outline-none font-normal focus:border-[#31A9ED] transition-all"
+                            className="text-md w-screen px-10 py-2  border-2 border-[#181B2C] rounded-lg  text-[#CACACA] bg-[#11131C] outline-none font-normal focus:border-[#31A9ED] transition-all"
                         />
                         <Search01Icon
                             className="absolute left-2 top-1/2 transform -translate-y-1/2"
@@ -43,7 +43,7 @@ export const Homepage = () => {
                 {isLoaded ? (
                     <WeatherStats />
                 ) : (
-                    <div className="translate-y-16">
+                    <div className="py-4">
                         <div className="justify-center flex select-none">
                             <img
                                 src={GreyCloudIcon}
