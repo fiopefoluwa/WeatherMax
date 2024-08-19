@@ -33,6 +33,7 @@ export const Homepage = () => {
     };
 
     const handleSuggestionClick = (cityName) => {
+        console.log(cities.filter((city) => city.name == cityName)[0]);
         setSearchCity(cityName);
         setSuggestions([]);
     };
@@ -79,7 +80,9 @@ export const Homepage = () => {
                                 <li
                                     key={id}
                                     className="font-normal cursor-pointer opacity-70 hover:opacity-100"
-                                    onClick={() =>handleSuggestionClick(city.name)}
+                                    onClick={() =>
+                                        handleSuggestionClick(city.name)
+                                    }
                                 >
                                     {city.name}
                                 </li>
