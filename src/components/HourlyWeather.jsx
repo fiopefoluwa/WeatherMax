@@ -27,10 +27,10 @@ export default function HourlyWeather({ weatherData }) {
     console.log(twelveHourlyForecast);
 
     return (
-        <>
+        <div className="max-w-lg overflow-hidden">
             <h2 className="text-xl font-bold py-6">12-Hour Forecast</h2>
             <section
-                className="w-full flex-nowrap overflow-y-hidden overflow-x-auto flex gap-2 items-center"
+                className="flex gap-2 flex-nowrap items-center overflow-y-hidden overflow-x-auto"
                 id="hourly-pills"
             >
                 {twelveHourlyForecast.map((stats, id) => (
@@ -44,6 +44,6 @@ export default function HourlyWeather({ weatherData }) {
                     />
                 ))}
             </section>
-        </>
+        </div>
     );
 }
