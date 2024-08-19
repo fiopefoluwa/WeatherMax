@@ -5,7 +5,9 @@ export default function LargeWeatherCard({
     temperature,
     weatherType,
     weatherIcon,
+    weatherStats,
 }) {
+    console.log(weatherStats);
     return (
         <section className="bg-[#0F1017] p-4 border-2 border-[#181B2C] flex gap-4 rounded-xl flex-col cursor-default">
             {/* LOCATION MARKER */}
@@ -20,7 +22,7 @@ export default function LargeWeatherCard({
                     <h3 className="text-3xl sm:text-5xl font-bold">
                         {temperature}
                     </h3>
-                    <span className="text-[#31A9ED] text-2xl">°C</span>
+                    <span className="text-[#31A9ED] text-3xl">°C</span>
                 </p>
 
                 {/* TEMP TYPE + ICON */}
@@ -33,6 +35,18 @@ export default function LargeWeatherCard({
                     />
                 </p>
             </p>
+            <div className="w-full h-[1px] bg-[#181B2C]"></div>
+            {/* WEATHER STATS */}
+            <section className="flex items-center justify-between">
+                {weatherStats.map((stat, id) => (
+                    <div key={id}>
+                        <p className="text-sm sm:text-base font-normal text-[#949AB5]">
+                            {stat.title}
+                        </p>
+                        <p className="text-sm sm:text-base font-medium pt-1">{stat.value}</p>
+                    </div>
+                ))}
+            </section>
         </section>
     );
 }
