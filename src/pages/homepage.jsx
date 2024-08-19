@@ -3,11 +3,39 @@ import { MyButton } from '../components/Button';
 import { Search01Icon } from 'hugeicons-react';
 import GreyCloudIcon from '../assets/grey-cloud.svg';
 import WeatherStats from './weatherstats';
+import cities from '../data/cities.json';
 
 export const Homepage = () => {
     // Determines when to show weather stats
     // eslint-disable-next-line no-unused-vars
-    const [isLoaded, setIsLoaded] = useState(true);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [searchCity, setSearchCity] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
+
+    // Suggest top cities
+    const handleSearchChange = (ev) => {
+        const inputValue = ev.target.value;
+        setSearchCity(inputValue);
+
+        if (inputValue) {
+            setSuggestions(
+                cities
+                    .filter((city) =>
+                        city.name
+                            .toLowerCase()
+                            .includes(inputValue.toLowerCase())
+                    )
+                    .slice(0, 5) // return only top 5
+            );
+        } else {
+            setSuggestions([]);
+        }
+    };
+
+    const handleSuggestionClick = (cityName) => {
+        setSearchCity(cityName);
+        setSuggestions([]);
+    };
 
     return (
         <>
@@ -25,11 +53,13 @@ export const Homepage = () => {
 
                 {/* SEARCH BOX */}
                 <div className="relative">
-                    <div className="relative flex py-8 transform">
+                    <div className="relative flex py-4 transform">
                         <input
                             type="text"
                             placeholder="City or state"
                             className="text-md w-full px-10 py-2  border-2 border-[#181B2C] rounded-lg  text-[#CACACA] bg-[#11131C] outline-none font-normal focus:border-[#31A9ED] transition-all"
+                            onChange={(ev) => handleSearchChange(ev)}
+                            value={searchCity}
                         />
                         <Search01Icon
                             className="absolute left-2 top-1/2 transform -translate-y-1/2"
@@ -38,6 +68,24 @@ export const Homepage = () => {
                         />
                         <MyButton textContent="Go" />
                     </div>
+                </div>
+                <div className="relative mt-2">
+                    {suggestions.length > 0 && (
+                        <ul className="w-full bg-[#0F1017] block rounded-lg p-4 border-[1px] border-[#181B2C] absolute top-0 bg-opacity-70 backdrop-blur-sm z-[999] max-h-60 overflow-y-auto">
+                            <h4 className="text-sm text-[#949AB5] pb-2">
+                                Suggestions
+                            </h4>
+                            {suggestions.map((city, id) => (
+                                <li
+                                    key={id}
+                                    className="font-normal cursor-pointer opacity-70 hover:opacity-100"
+                                    onClick={() =>handleSuggestionClick(city.name)}
+                                >
+                                    {city.name}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
 
                 {isLoaded ? (
