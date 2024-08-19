@@ -1,13 +1,5 @@
 import LargeWeatherCard from './LargeWeatherCard';
-
-const extractWeatherType = (code) => {
-    if (code >= 90) return ['Thunderstorm', 'RainThunder'];
-    else if (code >= 80) return ['Rainy', 'Rainy'];
-    else if (code >= 70) return ['Snowy', 'Snowy'];
-    else if (code >= 40) return ['Drizzles', 'Rainy'];
-    else if (code >= 3) return ['Cloudy', 'PartlyCloudy'];
-    else return ['Sunny', 'Sunny'];
-};
+import extractWeatherType from '../utils/extractWeatherType';
 
 export default function CurrentWeather({ location, weatherData }) {
     const temperature = weatherData['temperature_2m'];
@@ -31,10 +23,6 @@ export default function CurrentWeather({ location, weatherData }) {
                 weatherIcon={`/weather/${weatherIcon}.svg`}
                 weatherStats={weatherStats}
             />
-            {/* ADD OTHERS HERE */}
-            <p className="text-[#949AB5] text-base text-center pt-8">
-                Built by Xero && Fiope
-            </p>
         </>
     );
 }

@@ -93,7 +93,7 @@ export const Homepage = () => {
 
     return (
         <>
-            <div className="max-w-lg mx-auto w-screen p-4">
+            <div className="max-w-lg mx-auto w-full p-4">
                 {/* HEADER */}
                 <div className="flex justify-center text-4xl font-semibold">
                     <p>Weather</p>
@@ -145,7 +145,7 @@ export const Homepage = () => {
                 </div>
 
                 {/* DEFAULT STATE */}
-                {!(isLoaded || isFetching)  && (
+                {!(isLoaded || isFetching) && (
                     <div className="py-4">
                         <div className="justify-center flex select-none">
                             <img
