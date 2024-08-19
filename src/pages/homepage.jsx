@@ -11,7 +11,7 @@ export const Homepage = () => {
 
     return (
         <>
-            <div className="w-screen max-w-lg  p-4">
+            <div className="max-w-lg mx-auto w-screen p-4">
                 {/* HEADER */}
                 <div className="flex justify-center text-4xl font-semibold">
                     <p>Weather</p>
@@ -29,7 +29,7 @@ export const Homepage = () => {
                         <input
                             type="text"
                             placeholder="City or state"
-                            className="text-md w-screen px-10 py-2  border-2 border-[#181B2C] rounded-lg  text-[#CACACA] bg-[#11131C] outline-none font-normal focus:border-[#31A9ED] transition-all"
+                            className="text-md w-full px-10 py-2  border-2 border-[#181B2C] rounded-lg  text-[#CACACA] bg-[#11131C] outline-none font-normal focus:border-[#31A9ED] transition-all"
                         />
                         <Search01Icon
                             className="absolute left-2 top-1/2 transform -translate-y-1/2"
