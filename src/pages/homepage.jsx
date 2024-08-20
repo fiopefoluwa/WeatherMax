@@ -78,7 +78,7 @@ export const Homepage = () => {
             .get(`${constants.API}&latitude=${lat}&longitude=${lng}`)
             .then((res) => {
                 const data = res['data'];
-                console.log(data); // remove in prod
+                // PROD: console.log(data);
 
                 setWeatherData(data);
                 setIsFetching(false);
@@ -93,7 +93,7 @@ export const Homepage = () => {
 
     return (
         <>
-            <div className="max-w-lg w-screen mx-auto p-4">
+            <div className="max-w-lg w-screen mx-auto py-12 px-4">
                 {/* HEADER */}
                 <div className="flex justify-center text-4xl font-semibold">
                     <p>Weather</p>
