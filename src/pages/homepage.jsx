@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MyButton } from '.../Components/button';
+import { MyButton } from '../components/button';
 import { Search01Icon } from 'hugeicons-react';
 import GreyCloudIcon from '../assets/grey-cloud.svg';
 import WeatherStats from './weatherstats';
