@@ -16,11 +16,13 @@ body {
     width: 100%;
 }
 
-#hourly-pills::-webkit-scrollbar {
+#hourly-pills::-webkit-scrollbar,
+#daily-pills::-webkit-scrollbar {
     display: none;
 }
 
-#hourly-pills {
+#hourly-pills,
+#daily-pills {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }

@@ -57,7 +57,7 @@ export default function WeatherStats({ location, weatherData }) {
                 weatherData={weatherData['current']}
             />
             <HourlyWeather weatherData={weatherData['hourly']} />
-            <DailyWeather/>
+            <DailyWeather weatherData={weatherData['daily']} />
             <p className="text-[#949AB5] text-base text-center pt-8">
                 Built by Xero && Fiope
             </p>

@@ -23,8 +23,7 @@ export default function HourlyWeather({ weatherData }) {
         twelveHourlyForecast.push(hourStat);
     }
 
-    // DEBUG:
-    console.log(twelveHourlyForecast);
+    // DEBUG: console.log(twelveHourlyForecast);
 
     return (
         <div className="max-w-lg overflow-hidden">
