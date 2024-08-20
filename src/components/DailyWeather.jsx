@@ -9,8 +9,7 @@ export default function DailyWeather() {
             <section
                 className="flex gap-2 flex-nowrap items-center overflow-y-hidden overflow-x-auto"
                 id="daily-pills"
-            >
-                
+            >          
                 <DailyWeatherPill/>
             </section>
         </div>
