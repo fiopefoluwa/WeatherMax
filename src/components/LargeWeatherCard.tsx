@@ -1,12 +1,19 @@
 import { Location04Icon } from 'hugeicons-react';
 
+interface LargeWeatherCard{
+    location: string;
+    temperature : number;
+    weatherType : string;
+    weatherIcon: string;
+    weatherStats : { title: string; value: string}[];
+}
 export default function LargeWeatherCard({
     location,
     temperature,
     weatherType,
     weatherIcon,
     weatherStats,
-}) {
+}: LargeWeatherCard) {
     return (
         <section className="bg-[#0F1017] p-4 border-2 border-[#181B2C] flex gap-4 rounded-xl flex-col cursor-default">
             {/* LOCATION MARKER */}
