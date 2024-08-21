@@ -1,6 +1,16 @@
 import DailyWeatherPill from './DailyWeatherPill';
 
-export default function DailyWeather({ weatherData }) {
+interface DailyWeather{
+    weatherData: { 
+        sunrise: number; 
+        sunset: number;
+        uv : number;
+        chance: number;
+        day : string;
+    }[]
+}
+
+export default function DailyWeather({ weatherData } : DailyWeather) {
     const dailyForecast = [];
 
     // Build daily forecast data

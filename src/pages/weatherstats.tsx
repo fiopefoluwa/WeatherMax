@@ -2,6 +2,12 @@ import CurrentWeather from '../components/CurrentWeather';
 import HourlyWeather from '../components/HourlyWeather';
 import DailyWeather from '../components/DailyWeather';
 
+
+interface WeatherStatsProps {
+    location: string;
+    weatherData: any;
+}
+
 /** 
 
 WEATHER RESPONSE INTERFACE: **DON'T UNCOMMENT
@@ -49,7 +55,7 @@ const weatherData = {
  * Sunny => Default
  */
 
-export default function WeatherStats({ location, weatherData }) {
+export default function WeatherStats({ location, weatherData }: WeatherStatsProps) {
     return (
         <div className="max-w-lg w-full">
             <CurrentWeather

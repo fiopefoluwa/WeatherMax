@@ -1,4 +1,11 @@
-export const MyButton = ({ textContent, textColor, onClick }) => {
+interface Props{
+    textContent : string;
+    textColor: string;
+    onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+
+export const MyButton = ({ textContent , textColor, onClick }:Props) => {
     return (
         <div
             style={{ color: textColor }}

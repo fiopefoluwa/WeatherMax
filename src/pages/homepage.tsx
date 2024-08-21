@@ -7,6 +7,8 @@ import cities from '../data/cities.json';
 import axios from 'axios';
 import constants from '../shared/constants';
 
+
+
 export const Homepage = () => {
     // Determines when to show weather stats
     const [isLoaded, setIsLoaded] = useState(false);
@@ -69,7 +71,7 @@ export const Homepage = () => {
     };
 
     // Fetch weather data
-    const makeWeatherRequest = async (lat, lng) => {
+    const makeWeatherRequest = async (lat : number, lng: number) => {
         setIsFetching(true);
         setSuggestions([]);
         setIsError(false);

@@ -6,7 +6,15 @@ import {
 } from 'hugeicons-react';
 import extractDayFromNum from '../utils/extractDay';
 
-export default function DailyWeatherPill({ sunrise, sunset, uv, chance, day }) {
+interface DailyWeather{
+    sunrise : number;
+    sunset : number;
+    uv : number;
+    chance : number;
+    day: string;
+}
+
+export default function DailyWeatherPill({ sunrise, sunset, uv, chance, day } : DailyWeather) {
     const readableDay = extractDayFromNum(new Date(day).getDay());
 
     return (
