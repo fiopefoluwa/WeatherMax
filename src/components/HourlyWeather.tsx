@@ -1,7 +1,16 @@
 import extractWeatherType from '../utils/extractWeatherType';
 import HourlyWeatherPill from './HourlyWeatherPill';
 
-export default function HourlyWeather({ weatherData }) {
+
+interface Hourly{
+    weatherData : {
+        weatherType : string;
+        weatherIcon: string;
+        temperature : number;
+        time : Date;
+    }[]
+}
+export default function HourlyWeather({ weatherData } : Hourly) {
     const twelveHourlyForecast = [];
     const currentHour = new Date().getHours();
     const matchingHour = weatherData['time'].find(
