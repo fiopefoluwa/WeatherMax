@@ -1,10 +1,22 @@
+
+
+interface HourlyWeatherPill{
+    weatherIcon: string;
+    weatherType: string;
+    temperature: number;
+    time: string;
+    isPresent: boolean;
+}
+
+
+
 export default function HourlyWeatherPill({
     weatherIcon,
     weatherType,
     temperature,
     time,
     isPresent,
-}) {
+} : HourlyWeatherPill) {
     return (
         <>
             <div className="p-2 rounded-lg border-2 border-[#181B2C] bg-[#0F1017] flex flex-col justify-center items-center w-[160px] h-[160px] cursor-pointer flex-shrink-0 transition-all hover:bg-[#31A9ED] hover:border-[#31A9ED] hover:w-[220px] group">
