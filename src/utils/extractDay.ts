@@ -8,7 +8,7 @@ const days = [
     'Saturday',
 ];
 
-const extractDayFromNum = (num) => {
+const extractDayFromNum = (num : number) => {
     if (num < 7) return days[num];
     return '';
 };

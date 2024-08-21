@@ -1,4 +1,4 @@
-const extractWeatherType = (code) => {
+const extractWeatherType = (code : number) => {
     if (code >= 90) return ['Thunderstorm', 'RainThunder'];
     else if (code >= 80) return ['Rainy', 'Rainy'];
     else if (code >= 70) return ['Snowy', 'Snowy'];
