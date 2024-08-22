@@ -1,16 +1,7 @@
 {
-  "compilerOptions": {
-    "jsx": "react-jsx",
-     // this line
-     "types": ["vite/client", "node"],
-     "lib": ["ES2017"],
-    "target": "es5",                 
-    "module": "commonjs",
-    "esModuleInterop": true,                             
-    "forceConsistentCasingInFileNames": true,        
-    "resolveJsonModule": true,
-    "strict": true,
-    "skipLibCheck": true,    
-    "baseUrl": "./types"              
-  },
+    "files": [],
+    "references": [
+        { "path": "./tsconfig.app.json" },
+        { "path": "./tsconfig.node.json" }
+    ]
 }
