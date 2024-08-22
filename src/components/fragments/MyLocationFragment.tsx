@@ -1,7 +1,12 @@
+import { useState } from 'react';
+import NoGeo from '../my-location/NoGeo';
+
 export default function MyLocationFragment() {
+    const [isGeoEnabled, setIsGeoEnabled] = useState(false);
+
     return (
         <main className="w-full">
-            <h1 className="text-center">My Location Content</h1>
+            {isGeoEnabled ? <h1>Is Geolocation</h1> : <NoGeo />}
         </main>
     );
 }
