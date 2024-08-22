@@ -1,10 +1,14 @@
 import './App.css';
-import { Homepage } from './pages/homepage';
+// import { Homepage } from './pages/homepage';
 
 function App() {
     return (
         <>
-            <Homepage />
+            {/* <Homepage /> */}
+            <div>
+                bhbjdmhsbfvvvvvvvvvvvvvvvvv
+                sddddddddddd
+            </div>
         </>
     );
 }
