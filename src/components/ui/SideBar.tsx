@@ -41,7 +41,7 @@ export default function SideBar() {
         <section
             className={clsx(
                 'w-full col-span-1 relative transition-all sm:!h-auto overflow-hidden',
-                isExpanded ? 'h-[60px]' : 'h-[200px]'
+                isExpanded ? 'h-[54px]' : 'h-[200px]'
             )}
         >
             <ul>
