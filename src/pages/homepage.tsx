@@ -39,7 +39,7 @@ export const Homepage = () => {
     if (inputValue) {
       setSuggestions(
         cities
-          .filter((city: City) =>
+          .filter((city: ICity) =>
             city.name.toLowerCase().includes(inputValue.toLowerCase())
           )
           .slice(0, 5) // return only top 5
@@ -127,14 +127,14 @@ export const Homepage = () => {
               color="#CACACA"
               size={20}
             />
-            <MyButton textContent="Go" onClick={handleGoBtnClick} textColor={''} />
+            <MyButton textContent="Go" onClick={handleGoBtnClick}/>
           </div>
         </div>
         <div className="relative mt-2">
           {suggestions.length > 0 && (
             <ul className="w-full bg-[#0F1017] block rounded-lg p-4 border-[1px] border-[#181B2C] absolute top-0 bg-opacity-80 backdrop-blur-lg z-[999] max-h-60 overflow-y-auto">
               <h4 className="text-sm text-[#949AB5] pb-2">Suggestions</h4>
-              {suggestions.map((city: City, id: number) => (
+              {suggestions.map((city: ICity, id: number) => (
                 <li
                   key={id}
                   className="font-normal cursor-pointer opacity-70 hover:opacity-100 py-1"
