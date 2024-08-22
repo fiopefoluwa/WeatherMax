@@ -2,7 +2,10 @@ import { useContext } from 'react';
 import './App.css';
 import { ScreenContext } from './providers/screen/screenContext';
 import SCREEN from './providers/screen/screens';
-// import { Homepage } from './pages/homepage';
+import Cities from './screens/Cities';
+import MyLocation from './screens/MyLocation';
+import Settings from './screens/Settings';
+import WorldMap from './screens/WorldMap';
 
 function App() {
     const { currentScreen, setCurrentScreen } = useContext(ScreenContext);
@@ -10,16 +13,16 @@ function App() {
     // Handle which screen to show based on context
     switch (currentScreen) {
         case SCREEN.MY_LOCATION:
-            return <h1>My Location</h1>;
+            return <MyLocation />;
 
         case SCREEN.CITIES:
-            return <h1>Cities</h1>;
+            return <Cities />;
 
         case SCREEN.WORLD_MAP:
-            return <h1>World Map</h1>;
+            return <WorldMap />;
 
         default:
-            return <h1>Settings</h1>;
+            return <Settings />;
     }
 }
 
