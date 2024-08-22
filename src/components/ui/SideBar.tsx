@@ -1,7 +1,9 @@
+import clsx from 'clsx';
 import {
     City01Icon,
     LocationUser03Icon,
     MapsLocation01Icon,
+    Settings02Icon,
 } from 'hugeicons-react';
 import { ReactNode } from 'react';
 
@@ -12,9 +14,15 @@ interface SideBarItemProps {
     onClick: () => void;
 }
 
-const SideBarItem = ({ icon, text, onClick }: SideBarItemProps) => {
+const SideBarItem = ({ icon, text, onClick, isActive }: SideBarItemProps) => {
     return (
-        <li onClick={onClick} className="flex items-center gap-2 w-full">
+        <li
+            onClick={onClick}
+            className={clsx(
+                'flex items-center gap-2 w-full py-2 my-2 cursor-pointer text-grey-050 transition-colors hover:text-white',
+                isActive && '!text-primary border-l-2 border-primary pl-2'
+            )}
+        >
             {icon}
             <span>{text}</span>
         </li>
@@ -44,7 +52,7 @@ export default function SideBar() {
                     onClick={() => alert('World Map')}
                 />
                 <SideBarItem
-                    icon={<LocationUser03Icon />}
+                    icon={<Settings02Icon />}
                     text="Settings"
                     isActive={false}
                     onClick={() => alert('Settings')}
