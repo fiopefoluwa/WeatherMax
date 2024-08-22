@@ -66,9 +66,6 @@ export default function WeatherStats({
             />
             <HourlyWeather weatherData={weatherData['hourly']} />
             <DailyWeather weatherData={weatherData['daily']} />
-            <p className="text-[#949AB5] text-base text-center pt-8">
-                Built by Xero && Fiope
-            </p>
         </div>
     );
 }

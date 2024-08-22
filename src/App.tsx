@@ -9,7 +9,7 @@ import WorldMapFragment from './components/fragments/WorldMapFragment';
 import AppLayout from './layout/AppLayout';
 
 function App() {
-    const { currentScreen, setCurrentScreen } = useContext(ScreenContext);
+    const { currentScreen } = useContext(ScreenContext);
     let screenComponent = null;
 
     // Handle which screen to show based on context
@@ -31,7 +31,7 @@ function App() {
             break;
     }
 
-    return <AppLayout screen={screenComponent} setScreen={setCurrentScreen} />;
+    return <AppLayout screen={screenComponent} />;
 }
 
 export default App;
