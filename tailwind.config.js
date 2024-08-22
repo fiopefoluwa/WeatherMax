@@ -6,6 +6,8 @@ export default {
             colors: {
                 primary: '#31A9ED',
                 'grey-050': '#7E839A',
+                'card-dark': '#090A10',
+                'card-border': '#0E111A',
             },
         },
     },
