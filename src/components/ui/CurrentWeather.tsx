@@ -1,12 +1,15 @@
 import LargeWeatherCard from './LargeWeatherCard';
-import extractWeatherType from '../utils/extractWeatherType';
+import extractWeatherType from '../../utils/extractWeatherType';
 
-interface CurrentWeather{
-    location : string;
+interface CurrentWeather {
+    location: string;
     weatherData: any;
 }
 
-export default function CurrentWeather({ location, weatherData }: CurrentWeather) {
+export default function CurrentWeather({
+    location,
+    weatherData,
+}: CurrentWeather) {
     const temperature = weatherData['temperature_2m'];
     const [weatherType, weatherIcon] = extractWeatherType(
         weatherData['weather_code'] ?? 0

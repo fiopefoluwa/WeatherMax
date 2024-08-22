@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react';
-import { MyButton } from '../components/Button';
+import { MyButton } from '../components/ui/Button';
 import { Search01Icon } from 'hugeicons-react';
 import GreyCloudIcon from '../assets/grey-cloud.svg';
-import WeatherStats from '../components/WeatherStats';
+import WeatherStats from '../components/ui/WeatherStats';
 import cities from '../data/cities.json';
 import axios from 'axios';
 import constants from '../shared/constants';

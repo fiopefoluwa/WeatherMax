@@ -4,17 +4,23 @@ import {
     Uv02Icon,
     CloudAngledRainIcon,
 } from 'hugeicons-react';
-import extractDayFromNum from '../utils/extractDay';
+import extractDayFromNum from '../../utils/extractDay';
 
-interface DailyWeather{
-    sunrise : string;
-    sunset : string;
-    uv : number;
-    chance : number;
+interface DailyWeather {
+    sunrise: string;
+    sunset: string;
+    uv: number;
+    chance: number;
     day: string;
 }
 
-export default function DailyWeatherPill({ sunrise, sunset, uv, chance, day } : DailyWeather) {
+export default function DailyWeatherPill({
+    sunrise,
+    sunset,
+    uv,
+    chance,
+    day,
+}: DailyWeather) {
     const readableDay = extractDayFromNum(new Date(day).getDay());
 
     return (
