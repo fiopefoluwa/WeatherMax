@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import {
+    ArrowDown01Icon,
     City01Icon,
     LocationUser03Icon,
     MapsLocation01Icon,
@@ -34,9 +35,15 @@ const SideBarItem = ({ icon, text, onClick, isActive }: SideBarItemProps) => {
 export default function SideBar() {
     const { currentScreen, setCurrentScreen } = useContext(ScreenContext);
     const [activeTab, setActiveTab] = useState(currentScreen);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <section className="w-full col-span-1">
+        <section
+            className={clsx(
+                'w-full col-span-1 relative transition-all sm:!h-auto overflow-hidden',
+                isExpanded ? 'h-[60px]' : 'h-[200px]'
+            )}
+        >
             <ul>
                 <SideBarItem
                     icon={<LocationUser03Icon />}
@@ -75,6 +82,15 @@ export default function SideBar() {
                     }}
                 />
             </ul>
+            <button
+                className={clsx(
+                    'absolute right-0 top-[16px] cursor-pointer transition-all block sm:hidden text-grey-050 hover:text-white',
+                    isExpanded ? 'rotate-180' : 'rotate-0'
+                )}
+                onClick={() => setIsExpanded(!isExpanded)}
+            >
+                <ArrowDown01Icon size={24} />
+            </button>
         </section>
     );
 }
