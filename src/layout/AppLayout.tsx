@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import SCREEN from '../providers/screen/screens';
+import Header from '../components/ui/Header';
 
 interface AppLayoutProps {
     screen: React.ReactNode;
@@ -9,10 +10,12 @@ interface AppLayoutProps {
 // Default app layout: Grid
 export default function AppLayout({ screen, setScreen }: AppLayoutProps) {
     return (
-        <section>
-            {/* SIDE BAR */}
-            <main>{screen}</main>
-            {/* CLICK: <button onClick={() => setScreen(SCREEN.CITIES)}>Click</button> */}
-        </section>
+        <div>
+            <Header />
+            <section className="grid grid-cols-2">
+                {/* SIDE BAR */}
+                <main>{screen}</main>
+            </section>
+        </div>
     );
 }

@@ -3,10 +3,10 @@ import { ScreenContext } from '../../providers/screen/screenContext';
 import TopBarIcon from '../../assets/TopBarIcon.svg';
 
 export default function Header() {
-    // const [currentScreen, _] = useContext(ScreenContext);
+    const { currentScreen } = useContext(ScreenContext);
 
     return (
-        <header className="w-full p-4 border-2">
+        <header className="w-full p-4 flex items-center justify-center gap-2 cursor-default">
             <h1 className="flex items-center select-none">
                 <img
                     src={TopBarIcon}
@@ -17,6 +17,7 @@ export default function Header() {
                     Weather<span className="text-primary">Max</span>
                 </span>
             </h1>
+            <h1 className="text-xl text-grey-050">• {currentScreen}</h1>
         </header>
     );
 }

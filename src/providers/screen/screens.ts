@@ -1,8 +1,8 @@
 enum SCREEN {
-    MY_LOCATION = 'my_location',
-    CITIES = 'cities',
-    WORLD_MAP = 'world_map',
-    SETTINGS = 'settings',
+    MY_LOCATION = 'My Location',
+    CITIES = 'Cities',
+    WORLD_MAP = 'World Map',
+    SETTINGS = 'Settings',
 }
 
 export default SCREEN;
