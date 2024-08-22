@@ -88,7 +88,7 @@ export default function MyLocation() {
 
         try {
             const res = await axios.get(
-                `${constants.API}&latitude=${lat}&longitude=${lng}`
+                `${constants.WEATHER_API}&latitude=${lat}&longitude=${lng}`
             );
             const data = res.data;
 
