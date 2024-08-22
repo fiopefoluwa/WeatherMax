@@ -6,8 +6,8 @@ export default function Header() {
     const { currentScreen } = useContext(ScreenContext);
 
     return (
-        <header className="w-full p-4 flex items-center justify-center gap-2 cursor-default">
-            <h1 className="flex items-center select-none">
+        <header className="w-full p-4 flex items-center justify-center gap-2 cursor-default select-none">
+            <h1 className="flex items-center">
                 <img
                     src={TopBarIcon}
                     alt="top-bar-icon"
