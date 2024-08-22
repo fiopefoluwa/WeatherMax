@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { MyButton } from '../components/Button';
 import { Search01Icon } from 'hugeicons-react';
 import GreyCloudIcon from '../assets/grey-cloud.svg';
@@ -7,7 +7,16 @@ import cities from '../data/cities.json';
 import axios from 'axios';
 import constants from '../shared/constants';
 
+interface ICoords {
+    lng: number;
+    lat: number;
+}
 
+interface ICity {
+    lng: number;
+    lat: number;
+    name: string;
+}
 
 export const Homepage = () => {
     // Determines when to show weather stats
@@ -15,11 +24,11 @@ export const Homepage = () => {
     const [isFetching, setIsFetching] = useState(false);
     const [isError, setIsError] = useState(false);
     const [searchCity, setSearchCity] = useState('');
-    const [suggestions, setSuggestions] = useState([]);
+    const [suggestions, setSuggestions] = useState<Array<ICity>>([]);
     const [weatherData, setWeatherData] = useState(null);
 
     // Suggest top cities
-    const handleSearchChange = (ev) => {
+    const handleSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
         setIsLoaded(false);
         setIsFetching(false);
         setIsError(false);
@@ -43,7 +52,7 @@ export const Homepage = () => {
     };
 
     // Set city name, extract latitude and longitude then make request
-    const handleSuggestionClick = (cityName) => {
+    const handleSuggestionClick = (cityName: string) => {
         setSearchCity(cityName);
         const { lat, lng } = extractCoordinates(cityName);
         if (lat && lng) makeWeatherRequest(lat, lng);
@@ -58,20 +67,21 @@ export const Homepage = () => {
     };
 
     // Extract coordinates and return them
-    const extractCoordinates = (location) => {
+    const extractCoordinates = (location: string): ICoords => {
         try {
             const { lat, lng } = cities.find(
                 (city) => city.name.toLowerCase() == location.toLowerCase()
-            );
+            )!;
             return { lat, lng };
         } catch (err) {
             setIsError(true);
             console.error(err);
         }
+        return { lat: 0, lng: 0 };
     };
 
     // Fetch weather data
-    const makeWeatherRequest = async (lat : number, lng: number) => {
+    const makeWeatherRequest = async (lat: number, lng: number) => {
         setIsFetching(true);
         setSuggestions([]);
         setIsError(false);

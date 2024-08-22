@@ -1,21 +1,20 @@
 import extractWeatherType from '../utils/extractWeatherType';
 import HourlyWeatherPill from './HourlyWeatherPill';
 
-
 interface Hourly{
     weatherData : {
         weatherType : string;
-        weatherIcon: string;
-        temperature : number;
-        time : Date;
-    }[]
+        weather_code: number[];
+        temperature_2m : number[];
+        time : string[];
+    }
 }
 export default function HourlyWeather({ weatherData } : Hourly) {
     const twelveHourlyForecast = [];
     const currentHour = new Date().getHours();
     const matchingHour = weatherData['time'].find(
         (time) => parseInt(time.split('T')[1].slice(0, 2)) == currentHour
-    );
+    )!;
     const startIndex = weatherData['time'].indexOf(matchingHour);
     // DEBUG: console.log(startIndex)
 
