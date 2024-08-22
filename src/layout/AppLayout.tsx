@@ -13,7 +13,7 @@ export default function AppLayout({ screen, setScreen }: AppLayoutProps) {
     return (
         <div>
             <Header />
-            <section className="grid grid-cols-4 p-4">
+            <section className="sm:grid sm:grid-cols-4 p-4">
                 <SideBar />
                 <main className="min-h-[400px] col-span-3 bg-card-dark border border-card-border p-8 rounded-xl flex flex-col items-center">
                     {screen}

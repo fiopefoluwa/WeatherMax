@@ -17,7 +17,9 @@ export default function Header() {
                     Weather<span className="text-primary">Max</span>
                 </span>
             </h1>
-            <h1 className="text-lg text-grey-050">• {currentScreen}</h1>
+            <h1 className="hidden sm:block text-lg text-grey-050">
+                • {currentScreen}
+            </h1>
         </header>
     );
 }
