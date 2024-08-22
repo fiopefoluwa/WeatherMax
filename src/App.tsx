@@ -2,10 +2,10 @@ import { useContext } from 'react';
 import './App.css';
 import { ScreenContext } from './providers/screen/screenContext';
 import SCREEN from './providers/screen/screens';
-import Cities from './screens/Cities';
-import MyLocation from './screens/MyLocation';
-import Settings from './screens/Settings';
-import WorldMap from './screens/WorldMap';
+import CitiesFragment from './components/fragments/CitiesFragment';
+import MyLocationFragment from './components/fragments/MyLocationFragment';
+import SettingsFragment from './components/fragments/SettingsFragment';
+import WorldMapFragment from './components/fragments/WorldMapFragment';
 import AppLayout from './layout/AppLayout';
 
 function App() {
@@ -15,28 +15,23 @@ function App() {
     // Handle which screen to show based on context
     switch (currentScreen) {
         case SCREEN.MY_LOCATION:
-            screenComponent = <MyLocation />;
+            screenComponent = <MyLocationFragment />;
             break;
 
         case SCREEN.CITIES:
-            screenComponent = <Cities />;
+            screenComponent = <CitiesFragment />;
             break;
 
         case SCREEN.WORLD_MAP:
-            screenComponent = <WorldMap />;
+            screenComponent = <WorldMapFragment />;
             break;
 
         default:
-            screenComponent = <Settings />;
+            screenComponent = <SettingsFragment />;
             break;
     }
 
-    return (
-        <AppLayout
-            screen={screenComponent}
-            setScreen={setCurrentScreen}
-        />
-    );
+    return <AppLayout screen={screenComponent} setScreen={setCurrentScreen} />;
 }
 
 export default App;
