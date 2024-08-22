@@ -7,8 +7,8 @@ import {
 import extractDayFromNum from '../utils/extractDay';
 
 interface DailyWeather{
-    sunrise : number;
-    sunset : number;
+    sunrise : string;
+    sunset : string;
     uv : number;
     chance : number;
     day: string;

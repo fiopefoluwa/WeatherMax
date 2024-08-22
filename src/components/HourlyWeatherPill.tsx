@@ -8,8 +8,6 @@ interface HourlyWeatherPill{
     isPresent: boolean;
 }
 
-
-
 export default function HourlyWeatherPill({
     weatherIcon,
     weatherType,

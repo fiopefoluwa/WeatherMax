@@ -2,12 +2,12 @@ import DailyWeatherPill from './DailyWeatherPill';
 
 interface DailyWeather{
     weatherData: { 
-        sunrise: number; 
-        sunset: number;
-        uv : number;
-        chance: number;
-        day : string;
-    }[]
+        sunrise: string[]; 
+        sunset: string[];
+        uv_index_max : number[];
+        precipitation_probability_max: number[];
+        time : string[];
+    }
 }
 
 export default function DailyWeather({ weatherData } : DailyWeather) {
