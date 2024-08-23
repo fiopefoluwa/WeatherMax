@@ -17,7 +17,20 @@ export default function AppLayout({ screen }: AppLayoutProps) {
                         {screen}
                     </main>
                     <p className="text-[#949AB5] text-center py-4">
-                        Built by Xero && Fiope
+                        Built by{' '}
+                        <a
+                            href="https://github.com/dev-xero"
+                            className="hover:underline underline-offset-4 hover:text-white transition"
+                        >
+                            Xero
+                        </a>{' '}
+                        &&{' '}
+                        <a
+                            href="https://github.com/fiopefoluwa"
+                            className="hover:underline hover:text-white transition underline-offset-4"
+                        >
+                            Fiope
+                        </a>
                     </p>
                 </section>
             </section>
