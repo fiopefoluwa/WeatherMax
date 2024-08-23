@@ -24,3 +24,13 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+/* custom select style */
+#cities-dd {
+  appearance: none;
+  background-image: url("/drop-icon.svg");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem top 50%;
+  background-size: 0.65rem auto;
+}
+

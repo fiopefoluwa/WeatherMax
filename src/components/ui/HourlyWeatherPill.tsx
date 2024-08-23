@@ -1,6 +1,4 @@
-
-
-interface HourlyWeatherPill{
+interface HourlyWeatherPill {
     weatherIcon: string;
     weatherType: string;
     temperature: number;
@@ -14,10 +12,10 @@ export default function HourlyWeatherPill({
     temperature,
     time,
     isPresent,
-} : HourlyWeatherPill) {
+}: HourlyWeatherPill) {
     return (
         <>
-            <div className="p-2 rounded-lg border-2 border-[#181B2C] bg-[#0F1017] flex flex-col justify-center items-center w-[160px] h-[160px] cursor-pointer flex-shrink-0 transition-all hover:bg-[#31A9ED] hover:border-[#31A9ED] hover:w-[220px] group">
+            <div className="p-2 rounded-lg border-2 border-[#181B2C] bg-card-bg flex flex-col justify-center items-center w-[160px] h-[160px] cursor-pointer flex-shrink-0 transition-all hover:bg-[#31A9ED] hover:border-[#31A9ED] hover:w-[220px] group">
                 <img
                     src={weatherIcon}
                     alt={weatherIcon}

@@ -15,7 +15,7 @@ export default function LargeWeatherCard({
     weatherStats,
 }: LargeWeatherCard) {
     return (
-        <section className="bg-[#0F1017] p-4 border-2 border-[#181B2C] flex gap-4 rounded-xl flex-col cursor-default">
+        <section className="bg-card-bg p-4 border-2 border-[#181B2C] flex gap-4 rounded-xl flex-col cursor-default">
             {/* LOCATION MARKER */}
             <p className="flex items-center gap-2">
                 <Location04Icon size={18} />

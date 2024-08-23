@@ -8,6 +8,8 @@ export default {
                 'grey-050': '#7E839A',
                 'card-dark': '#090A10',
                 'card-border': '#0E111A',
+                'card-bg': '#0F111A',
+                'lighter-border': '#161927'
             },
         },
     },
