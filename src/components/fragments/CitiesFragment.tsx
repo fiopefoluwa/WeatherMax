@@ -91,7 +91,7 @@ export default function CitiesFragment() {
                                 Weekly Temperature Highs
                             </h2>
                             <Plot data={plotData} />
-                            <h2 className="text-lg text-primary font-bold py-3">
+                            <h2 className="text-lg text-primary font-bold pt-6 pb-3">
                                 Weekly Rain Probability
                             </h2>
                             <Plot

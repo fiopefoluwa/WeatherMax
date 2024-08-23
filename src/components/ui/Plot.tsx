@@ -15,6 +15,14 @@ interface PlotProps {
     data: PlotPoint[];
 }
 
+const tooltipStyle = {
+    backgroundColor: '#090A10',
+    border: '2px solid #161927', // Border style of the tooltip
+    borderRadius: '4px', // Rounded corners
+    color: '#fff',
+    padding: '4px'
+};
+
 export default function Plot({ data }: PlotProps) {
     return (
         <ResponsiveContainer width="100%" height={400}>
@@ -32,7 +40,7 @@ export default function Plot({ data }: PlotProps) {
                     opacity={0.4}
                 />
                 <XAxis dataKey="name" stroke="#949AB5" />
-                <Tooltip />
+                <Tooltip contentStyle={tooltipStyle} />
                 <YAxis stroke="#949AB5" />
             </AreaChart>
         </ResponsiveContainer>
