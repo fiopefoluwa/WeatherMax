@@ -46,7 +46,7 @@ export default function LargeWeatherCard({
             <section className="flex items-center justify-between">
                 {weatherStats.map((stat, id) => (
                     <div key={id}>
-                        <p className="text-sm sm:text-base font-normal text-[#949AB5]">
+                        <p className="text-xs sm:text-base font-normal text-[#949AB5]">
                             {stat.title}
                         </p>
                         <p className="text-sm sm:text-base font-medium pt-1">{stat.value}</p>
