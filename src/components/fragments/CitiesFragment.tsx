@@ -17,6 +17,7 @@ export default function CitiesFragment() {
     const makeWeatherRequest = async () => {
         if (coords.lat != -1 && coords.lng != -1) {
             try {
+                setWeatherData(null);
                 setErrorMsg('');
                 setIsFetching(true);
                 const weatherData = await fetchWeatherData(
