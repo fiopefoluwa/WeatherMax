@@ -27,11 +27,14 @@ export default function CitiesFragment() {
                     coords.lat,
                     coords.lng
                 );
-                // DEBUG: console.log(weatherData);
+                // DEBUG:
+                console.log(weatherData);
                 setWeatherData(weatherData);
             } catch (err) {
                 console.error(err);
-                setErrorMsg('');
+                setErrorMsg(
+                    "Seems we can't get weather forecasts at this time."
+                );
             } finally {
                 setIsFetching(false);
             }
@@ -68,7 +71,10 @@ export default function CitiesFragment() {
             <section className="mt-4">
                 {weatherData && (
                     <>
-                        <h3 className="font-bold text-2xl mb-4">Weather Overview</h3>
+                        <div className="w-full h-[1px] bg-[#181B2C] mb-4"></div>
+                        <h3 className="font-bold text-2xl mb-4">
+                            Weather Overview
+                        </h3>
                         <WeatherStats
                             location={city}
                             weatherData={weatherData}
