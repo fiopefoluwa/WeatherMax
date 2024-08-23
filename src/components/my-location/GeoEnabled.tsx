@@ -9,7 +9,9 @@ export default function GeoEnabled(props: GeoEnabledProps) {
     return (
         <>
             <main>
-                <h2 className="text-xl mb-2">Forecasts for {props.city}</h2>
+                <h2 className="text-2xl mb-4 font-bold">
+                    Forecasts for {props.city}
+                </h2>
                 <WeatherStats location={props.city} weatherData={props.data} />
             </main>
         </>

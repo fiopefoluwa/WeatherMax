@@ -13,7 +13,7 @@ export default function AppLayout({ screen }: AppLayoutProps) {
             <section className="sm:grid sm:grid-cols-4 p-4">
                 <SideBar />
                 <section className="col-span-3">
-                    <main className="min-h-[400px] bg-card-dark border border-card-border p-8 rounded-xl flex flex-col items-center">
+                    <main className="min-h-[400px] bg-card-dark border border-card-border p-4 sm:p-8 rounded-xl flex flex-col items-center">
                         {screen}
                     </main>
                     <p className="text-[#949AB5] text-center py-4">
