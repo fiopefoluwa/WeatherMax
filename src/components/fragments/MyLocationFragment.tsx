@@ -4,7 +4,6 @@ import ICoords from '../../lib/coords';
 import GeoEnabled from '../my-location/GeoEnabled';
 import axios from 'axios';
 import constants from '../../shared/constants';
-import credentials from '../../private';
 
 export default function MyLocationFragment() {
     const [isGeoEnabled, setIsGeoEnabled] = useState(false);
@@ -41,8 +40,13 @@ export default function MyLocationFragment() {
 
         // Make request to get current city if cache has expired
         try {
+            const api_key = import.meta.env.VITE_LOCATION_API_KEY;
+            if (!api_key) {
+                throw new Error('Failed to load API key.');
+            }
+
             const res = await axios.get(
-                `${constants.CITY_API}&key=${credentials.locationIQAPIKey}&lat=${latitude}&lon=${longitude}`
+                `${constants.CITY_API}&key=${api_key}&lat=${latitude}&lon=${longitude}`
             );
 
             // DEBUG: console.log(res.data);
@@ -74,18 +78,21 @@ export default function MyLocationFragment() {
     useEffect(() => {
         try {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(geoSuccessCallback, () => {
-                    setIsGeoEnabled(false);
-                    setIsLoading(false);
-                    setShowDeniedMsg(true);
-                });
+                navigator.geolocation.getCurrentPosition(
+                    geoSuccessCallback,
+                    () => {
+                        setIsGeoEnabled(false);
+                        setIsLoading(false);
+                        setShowDeniedMsg(true);
+                    }
+                );
             } else {
                 setIsGeoEnabled(false);
                 setIsLoading(false);
                 setShowDeniedMsg(true);
             }
         } catch (err) {
-            alert(err)
+            alert(err);
         }
     }, []);
 
