@@ -9,7 +9,8 @@ export default {
                 'card-dark': '#090A10',
                 'card-border': '#0E111A',
                 'card-bg': '#0F111A',
-                'lighter-border': '#161927'
+                'lighter-border': '#161927',
+                error: '#FF8181',
             },
         },
     },

@@ -4,27 +4,19 @@ import ICoords from '../../lib/coords';
 import GeoEnabled from '../my-location/GeoEnabled';
 import axios from 'axios';
 import constants from '../../shared/constants';
+import fetchWeatherData from '../../lib/fetchWeatherData';
 
 export default function MyLocationFragment() {
     const [isGeoEnabled, setIsGeoEnabled] = useState(false);
     const [showDeniedMsg, setShowDeniedMsg] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-    const [coords, setCoords] = useState<ICoords>({ lat: 0, lng: 0 });
+    const [coords, setCoords] = useState<ICoords>({ lat: -1, lng: -1 });
     const [cityName, setCityName] = useState('');
     const [weatherData, setWeatherData] = useState(null);
 
     const cacheKey = 'cachedCity';
     const cacheExpiryKey = 'cacheExpiry';
     const cacheDuration = 60 * 60 * 1000; // 1 hr
-
-    // Fetch weather data based on coordinates
-    const fetchWeatherData = async (lat: number, lng: number) => {
-        const weatherRes = await axios.get(
-            `${constants.WEATHER_API}&latitude=${lat}&longitude=${lng}`
-        );
-
-        return weatherRes.data;
-    };
 
     const geoSuccessCallback = async (pos: GeolocationPosition) => {
         const { latitude, longitude } = pos.coords;
@@ -122,7 +114,7 @@ export default function MyLocationFragment() {
             ) : (
                 <main className="w-full">
                     {showDeniedMsg && (
-                        <p className="text-center text-[#FF8181]">
+                        <p className="text-center text-error">
                             Geolocation request denied or not allowed.
                         </p>
                     )}
