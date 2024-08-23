@@ -34,3 +34,6 @@ body {
   background-size: 0.65rem auto;
 }
 
+textarea:focus, input:focus{
+    outline: none !important;
+}
