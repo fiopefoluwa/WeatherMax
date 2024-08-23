@@ -11,10 +11,20 @@ export default function MyLocationFragment() {
     const [isLoading, setIsLoading] = useState(true);
     const [coords, setCoords] = useState<ICoords>({ lat: 0, lng: 0 });
     const [cityName, setCityName] = useState('');
+    const [weatherData, setWeatherData] = useState(null);
 
     const cacheKey = 'cachedCity';
     const cacheExpiryKey = 'cacheExpiry';
     const cacheDuration = 60 * 60 * 1000; // 1 hr
+
+    // Fetch weather data based on coordinates
+    const fetchWeatherData = async (lat: number, lng: number) => {
+        const weatherRes = await axios.get(
+            `${constants.WEATHER_API}&latitude=${lat}&longitude=${lng}`
+        );
+
+        return weatherRes.data;
+    };
 
     const geoSuccessCallback = async (pos: GeolocationPosition) => {
         const { latitude, longitude } = pos.coords;
@@ -33,8 +43,15 @@ export default function MyLocationFragment() {
         // If we have both keys and current time is not expiry, return cache
         if (cachedCity && cacheExpiry && Date.now() < parseInt(cacheExpiry)) {
             setCityName(cachedCity);
+
+            // Fetch weather data directly
+            const weatherData = await fetchWeatherData(latitude, longitude);
+            setWeatherData(weatherData);
+
+            // Display data
             setIsGeoEnabled(true);
             setIsLoading(false);
+
             return;
         }
 
@@ -50,7 +67,6 @@ export default function MyLocationFragment() {
             );
 
             // DEBUG: console.log(res.data);
-
             const fetchedCity =
                 res.data['address']['city'] || res.data['address']['county'];
 
@@ -63,8 +79,9 @@ export default function MyLocationFragment() {
                 (Date.now() + cacheDuration).toString()
             );
 
-            // Make request to get weather data
-
+            // Fetch weather data
+            const weatherData = await fetchWeatherData(latitude, longitude);
+            setWeatherData(weatherData);
             setIsGeoEnabled(true);
         } catch (err) {
             console.error(err);
@@ -109,7 +126,11 @@ export default function MyLocationFragment() {
                             Geolocation request denied or not allowed.
                         </p>
                     )}
-                    {isGeoEnabled ? <GeoEnabled city={cityName} /> : <NoGeo />}
+                    {isGeoEnabled ? (
+                        <GeoEnabled city={cityName} data={weatherData} />
+                    ) : (
+                        <NoGeo />
+                    )}
                 </main>
             )}
         </>

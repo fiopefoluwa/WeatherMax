@@ -22,7 +22,7 @@ const SideBarItem = ({ icon, text, onClick, isActive }: SideBarItemProps) => {
         <li
             onClick={onClick}
             className={clsx(
-                'flex items-center gap-2 w-full py-2 my-2 cursor-pointer text-grey-050 transition-colors hover:text-white select-none',
+                'flex items-center gap-2 w-full py-2 my-4 cursor-pointer text-grey-050 transition-colors hover:text-white select-none',
                 isActive && '!text-primary border-l-2 border-primary pl-2'
             )}
         >
@@ -40,8 +40,8 @@ export default function SideBar() {
     return (
         <section
             className={clsx(
-                'w-full col-span-1 relative transition-all sm:!h-auto overflow-hidden',
-                isExpanded ? 'h-[54px]' : 'h-[200px]'
+                'w-full col-span-1 relative transition-all sm:!h-auto overflow-hidden mb-4 sm:mb-0',
+                isExpanded ? 'h-[64px]' : 'h-[240px]'
             )}
         >
             <ul>

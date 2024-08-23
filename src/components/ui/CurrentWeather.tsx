@@ -23,7 +23,7 @@ export default function CurrentWeather({
 
     return (
         <>
-            <h2 className="text-xl font-bold pb-4">Current Weather</h2>
+            <h2 className="text-lg font-bold pb-4 text-primary">Current Weather</h2>
             <LargeWeatherCard
                 location={location}
                 temperature={temperature}

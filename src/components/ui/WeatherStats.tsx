@@ -59,7 +59,7 @@ export default function WeatherStats({
     weatherData,
 }: WeatherStatsProps) {
     return (
-        <div className="max-w-lg w-full">
+        <div className="w-full">
             <CurrentWeather
                 location={location}
                 weatherData={weatherData['current']}
