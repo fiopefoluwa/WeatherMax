@@ -21,6 +21,7 @@ export default function AppLayout({ screen }: AppLayoutProps) {
                         <a
                             href="https://github.com/dev-xero"
                             className="hover:underline underline-offset-4 hover:text-white transition"
+                            target="_blank"
                         >
                             Xero
                         </a>{' '}
@@ -28,6 +29,7 @@ export default function AppLayout({ screen }: AppLayoutProps) {
                         <a
                             href="https://github.com/fiopefoluwa"
                             className="hover:underline hover:text-white transition underline-offset-4"
+                            target="_blank"
                         >
                             Fiope
                         </a>
