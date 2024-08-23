@@ -3,6 +3,8 @@ import DropDown from '../ui/DropDown';
 import ICoords from '../../lib/coords';
 import fetchWeatherData from '../../lib/fetchWeatherData';
 import WeatherStats from '../ui/WeatherStats';
+import Plot from '../ui/Plot';
+import generatePlotData, { PlotPoint } from '../../lib/generatePlotData';
 
 export default function CitiesFragment() {
     const [weatherData, setWeatherData] = useState(null);
@@ -10,6 +12,7 @@ export default function CitiesFragment() {
     const [errorMsg, setErrorMsg] = useState('');
     const [city, setCity] = useState('');
     const [coords, setCoords] = useState<ICoords>({ lat: -1, lng: -1 });
+    const [plotData, setPlotData] = useState<PlotPoint[]>([]);
 
     const handleOnChange = (coords: ICoords, city: string) => {
         setCoords(coords);
@@ -29,6 +32,9 @@ export default function CitiesFragment() {
                 );
                 // DEBUG:
                 console.log(weatherData);
+                setPlotData(
+                    generatePlotData(weatherData['daily']['temperature_2m_max'])
+                );
                 setWeatherData(weatherData);
             } catch (err) {
                 console.error(err);
@@ -79,6 +85,23 @@ export default function CitiesFragment() {
                             location={city}
                             weatherData={weatherData}
                         />
+                        {/* Plots */}
+                        <section className="mt-4">
+                            <h2 className="text-lg text-primary font-bold py-6">
+                                Weekly Temperature Highs
+                            </h2>
+                            <Plot data={plotData} />
+                            <h2 className="text-lg text-primary font-bold py-3">
+                                Weekly Rain Probability
+                            </h2>
+                            <Plot
+                                data={generatePlotData(
+                                    weatherData['daily'][
+                                        'precipitation_probability_max'
+                                    ]
+                                )}
+                            />
+                        </section>
                     </>
                 )}
             </section>
