@@ -15,10 +15,10 @@ interface PlotProps {
 
 const tooltipStyle = {
     backgroundColor: '#090A10',
-    border: '2px solid #161927', // Border style of the tooltip
-    borderRadius: '4px', // Rounded corners
+    border: '2px solid #161927',
+    borderRadius: '4px',
     color: '#fff',
-    padding: '4px'
+    // padding: '4px'
 };
 
 export default function Plot({ data }: PlotProps) {
