@@ -2,15 +2,18 @@ import { useState } from 'react';
 import DropDown from '../ui/DropDown';
 import ICoords from '../../lib/coords';
 import fetchWeatherData from '../../lib/fetchWeatherData';
+import WeatherStats from '../ui/WeatherStats';
 
 export default function CitiesFragment() {
     const [weatherData, setWeatherData] = useState(null);
     const [isFetching, setIsFetching] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
+    const [city, setCity] = useState('');
     const [coords, setCoords] = useState<ICoords>({ lat: -1, lng: -1 });
 
-    const handleOnChange = async (coords: ICoords) => {
+    const handleOnChange = (coords: ICoords, city: string) => {
         setCoords(coords);
+        setCity(city);
     };
 
     // Make weather requests based on coordinates
@@ -65,10 +68,11 @@ export default function CitiesFragment() {
             <section className="mt-4">
                 {weatherData && (
                     <>
-                        <h3 className="font-bold text-2xl">Weather Overview</h3>
-                        <p className="my-2 text-grey-050">
-                            Select a city to get overviews.
-                        </p>
+                        <h3 className="font-bold text-2xl mb-4">Weather Overview</h3>
+                        <WeatherStats
+                            location={city}
+                            weatherData={weatherData}
+                        />
                     </>
                 )}
             </section>

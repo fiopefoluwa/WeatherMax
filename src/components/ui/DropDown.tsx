@@ -3,7 +3,7 @@ import cities from '../../data/cities.json';
 import ICoords from '../../lib/coords';
 
 interface DropDownProps {
-    onChange: (coords: ICoords) => void;
+    onChange: (coords: ICoords, city: string) => void;
 }
 
 export default function DropDown(props: DropDownProps) {
@@ -16,7 +16,7 @@ export default function DropDown(props: DropDownProps) {
         const selectedCity = cities.find((thisCity) => thisCity.name == city);
         if (selectedCity) {
             const coords = { lat: selectedCity.lat, lng: selectedCity.lng };
-            props.onChange(coords);
+            props.onChange(coords, city);
         }
     };
 
