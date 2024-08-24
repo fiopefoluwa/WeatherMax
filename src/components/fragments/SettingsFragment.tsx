@@ -97,12 +97,10 @@ export default function SettingsFragment() {
     const [selectedTheme, setSelectedTheme] = useState('dark');
     const [selectedUnits, setSelectedUnits] = useState('celsius');
 
-    // Apply theme change
     useEffect(() => {
         document.body.className = selectedTheme === 'dark' ? 'dark-theme' : 'light-theme';
     }, [selectedTheme]);
 
-    // Function to convert temperature (for demonstration purposes)
     // const convertTemperature = (value: number, toUnit: string) => {
     //     if (toUnit === 'fahrenheit') {
     //         return (value * 9/5) + 32;
