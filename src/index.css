@@ -5,7 +5,8 @@ body.dark-theme {
 
 body.light-theme {
   background-color: #ffffff;
-  color: #121212;
+  /* color: #121212; */
+  color: #ffffff;
 }
 
 
