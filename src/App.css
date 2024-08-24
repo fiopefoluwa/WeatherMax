@@ -24,3 +24,18 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+/* custom select style */
+#cities-dd,
+#temp-dd,
+#theme-dd {
+  appearance: none;
+  background-image: url("/drop-icon.svg");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem top 50%;
+  background-size: 0.65rem auto;
+}
+
+textarea:focus, input:focus{
+    outline: none !important;
+}

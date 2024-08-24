@@ -25,7 +25,7 @@ export default function DailyWeatherPill({
 
     return (
         <>
-            <div className="p-2 flex flex-col justify-center items-center rounded-lg border-2 border-[#181B2C] bg-[#0F1017]  w-[240px] h-[180px] cursor-pointer flex-shrink-0 transition-all hover:bg-[#31A9ED] hover:border-[#31A9ED] hover:w-[260px] group select-none">
+            <div className="p-2 flex flex-col justify-center items-center rounded-lg border-2 border-[#181B2C] bg-card-bg  w-[240px] h-[180px] cursor-pointer flex-shrink-0 transition-all hover:bg-[#31A9ED] hover:border-[#31A9ED] hover:w-[260px] group select-none">
                 <p className="text-xl text-center">{readableDay}</p>
                 <section className="pt-2 flex flex-col group-hover:!text-white">
                     {/* SUNRISE */}

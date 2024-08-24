@@ -1,11 +1,11 @@
 import { Location04Icon } from 'hugeicons-react';
 
-interface LargeWeatherCard{
+interface LargeWeatherCard {
     location: string;
-    temperature : number;
-    weatherType : string;
+    temperature: number;
+    weatherType: string;
     weatherIcon: string;
-    weatherStats : { title: string; value: string}[];
+    weatherStats: { title: string; value: string }[];
 }
 export default function LargeWeatherCard({
     location,
@@ -15,7 +15,7 @@ export default function LargeWeatherCard({
     weatherStats,
 }: LargeWeatherCard) {
     return (
-        <section className="bg-[#0F1017] p-4 border-2 border-[#181B2C] flex gap-4 rounded-xl flex-col cursor-default">
+        <section className="bg-card-bg p-4 border-2 border-[#181B2C] flex gap-4 rounded-xl flex-col cursor-default">
             {/* LOCATION MARKER */}
             <p className="flex items-center gap-2">
                 <Location04Icon size={18} />
@@ -46,10 +46,12 @@ export default function LargeWeatherCard({
             <section className="flex items-center justify-between">
                 {weatherStats.map((stat, id) => (
                     <div key={id}>
-                        <p className="text-sm sm:text-base font-normal text-[#949AB5]">
+                        <p className="text-xs text-center sm:text-left sm:text-base font-normal text-[#949AB5]">
                             {stat.title}
                         </p>
-                        <p className="text-sm sm:text-base font-medium pt-1">{stat.value}</p>
+                        <p className="text-sm text-center sm:text-left sm:text-base font-medium pt-1">
+                            {stat.value}
+                        </p>
                     </div>
                 ))}
             </section>
