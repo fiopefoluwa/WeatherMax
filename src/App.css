@@ -7,7 +7,7 @@
 body {
     height: 100vh;
     color: white;
-    background-color: #06070b;
+    background-color: #090a10;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-style: normal;
@@ -40,3 +40,40 @@ body {
 textarea:focus, input:focus{
     outline: none !important;
 }
+
+
+
+.dark-theme {
+    --background-color: #090a10;
+    --text-color: #7e839a;
+    --border-color: #2d3748;
+    --card-bg-color: #2d3748;
+    --primary-color: #90cdf4;
+    --lighter-border-color: #4a5568;
+}
+
+.dark-theme body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+
+.light-theme {
+    --background-color: #ffffff;
+    --text-color: #2d3748;
+    --border-color: #e2e8f0;
+    --card-bg-color: #f7fafc;
+    --primary-color: #3182ce;
+    --lighter-border-color: #cbd5e0;
+}
+
+.light-theme body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.light-theme .bg-card-bg {
+    background-color: var(--card-bg-color);
+}
+
+

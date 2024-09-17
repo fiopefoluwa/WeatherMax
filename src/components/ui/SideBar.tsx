@@ -23,7 +23,7 @@ const SideBarItem = ({ icon, text, onClick, isActive }: SideBarItemProps) => {
         <li
             onClick={onClick}
             className={clsx(
-                'flex items-center gap-2 w-full py-2 my-4 cursor-pointer text-grey-050 transition-colors hover:text-white select-none',
+                'flex items-center gap-2 w-full py-2 my-4 cursor-pointer text-grey-050 transition-colors hover:text-[#31a9ed] select-none',
                 isActive && '!text-primary border-l-2 border-primary pl-2'
             )}
         >
@@ -85,7 +85,7 @@ export default function SideBar() {
             </ul>
             <button
                 className={clsx(
-                    'absolute right-0 top-[16px] cursor-pointer transition-all block sm:hidden text-grey-050 hover:text-white',
+                    'absolute right-0 top-[16px] cursor-pointer transition-all block sm:hidden text-grey-050 hover:text-black',
                     isExpanded ? 'rotate-180' : 'rotate-0'
                 )}
                 onClick={() => setIsExpanded(!isExpanded)}

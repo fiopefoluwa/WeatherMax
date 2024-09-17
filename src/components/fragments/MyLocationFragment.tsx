@@ -105,6 +105,11 @@ export default function MyLocationFragment() {
         }
     }, []);
 
+    // function convertTemperature(value: number, unit: string) {
+    //     if (unit === 'fahrenheit') {
+    //         return (value * 9/5) + 32;
+    //     }
+    //     return value;
     return (
         <>
             {isLoading ? (

@@ -2,15 +2,21 @@ import { Rocket01Icon } from 'hugeicons-react';
 import { useState, useEffect } from 'react';
 
 export default function SettingsFragment() {
-    const [selectedTheme, setSelectedTheme] = useState('dark');
+    const [selectedTheme, setSelectedTheme] = useState(() => localStorage.getItem('theme') || 'dark');
     const [selectedUnits, setSelectedUnits] = useState('celsius');
 
     useEffect(() => {
-        document.body.className = selectedTheme === 'dark' ? 'dark-theme' : 'light-theme';
+        const root = document.documentElement;
+        if (selectedTheme === 'dark') {
+            root.classList.add('dark-theme');
+            root.classList.remove('light-theme');
+        } else {
+            root.classList.add('light-theme');
+            root.classList.remove('dark-theme');
+        }
+        // Save selected theme to localStorage
+        localStorage.setItem('theme', selectedTheme);
     }, [selectedTheme]);
-
-
-
 
     return (
         <main className="w-full">
