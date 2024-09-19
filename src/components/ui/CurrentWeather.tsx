@@ -1,5 +1,8 @@
 import LargeWeatherCard from './LargeWeatherCard';
 import extractWeatherType from '../../utils/extractWeatherType';
+import TempConverter from '../../lib/converter';
+import { useContext } from 'react';
+import { TempUnitContext } from '../../providers/temp/tempUnitContext';
 
 interface CurrentWeather {
     location: string;
@@ -10,7 +13,9 @@ export default function CurrentWeather({
     location,
     weatherData,
 }: CurrentWeather) {
-    const temperature = weatherData['temperature_2m'];
+    const tempContext = useContext(TempUnitContext);
+    const converter = new TempConverter(tempContext.currentTempUnit);
+    const temperature = converter.convert(weatherData['temperature_2m']);
     const [weatherType, weatherIcon] = extractWeatherType(
         weatherData['weather_code'] ?? 0
     );
@@ -23,8 +28,11 @@ export default function CurrentWeather({
 
     return (
         <>
-            <h2 className="text-lg font-bold pb-4 text-primary">Current Weather</h2>
+            <h2 className="text-lg font-bold pb-4 text-primary">
+                Current Weather
+            </h2>
             <LargeWeatherCard
+                unit={converter.tempUnit}
                 location={location}
                 temperature={temperature}
                 weatherType={weatherType}
