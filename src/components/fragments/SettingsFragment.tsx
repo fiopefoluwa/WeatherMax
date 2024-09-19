@@ -1,9 +1,22 @@
 import { Rocket01Icon } from 'hugeicons-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { TempUnitContext } from '../../providers/temp/tempUnitContext';
+import { UNIT } from '../../lib/converter';
 
 export default function SettingsFragment() {
-    const [selectedTheme, setSelectedTheme] = useState(() => localStorage.getItem('theme') || 'dark');
-    const [selectedUnits, setSelectedUnits] = useState('celsius');
+    const tempContext = useContext(TempUnitContext);
+    const [selectedTheme, setSelectedTheme] = useState(
+        () => localStorage.getItem('theme') || 'dark'
+    );
+    const [selectedUnits, setSelectedUnits] = useState(
+        tempContext.currentTempUnit == UNIT.CELSIUS ? 'celsius' : 'fahrenheit'
+    );
+
+    const updateSelectedUnit = (to: string) => {
+        to == 'celsius'
+            ? tempContext.setCurrentTempUnit(UNIT.CELSIUS)
+            : tempContext.setCurrentTempUnit(UNIT.FAHRENHEIT);
+    };
 
     useEffect(() => {
         const root = document.documentElement;
@@ -40,14 +53,25 @@ export default function SettingsFragment() {
                 </select>
 
                 {/* TEMPERATURE SETTINGS */}
-                <h4 className="text-grey-050 font-medium mt-4 mb-2">
+                <h4 className="text-grey-050 font-medium mt-4 mb-1">
                     Temperature Unit
                 </h4>
+                <p className="mb-4">
+                    Currently set to:{' '}
+                    <span className="text-primary font-bold">
+                        {tempContext.currentTempUnit == UNIT.CELSIUS
+                            ? 'Celsius'
+                            : 'Fahrenheit'}
+                    </span>
+                </p>
                 <select
                     name="temp-dd"
                     id="temp-dd"
                     value={selectedUnits}
-                    onChange={(ev) => setSelectedUnits(ev.target.value)}
+                    onChange={(ev) => {
+                        setSelectedUnits(ev.target.value);
+                        updateSelectedUnit(ev.target.value);
+                    }}
                     className="w-full border-2 border-lighter-border bg-card-bg p-4 rounded-lg"
                 >
                     <option value="celsius" className="select-none">
@@ -67,15 +91,14 @@ export default function SettingsFragment() {
                 <section className="text-[#B8C0E2] font-normal mt-4 leading-[26px]">
                     <p>
                         <span className="font-bold">WeatherMax</span> is a
-                        modern, full-featured, weather prediction and
-                        analysis software built from the ground up to be
-                        hyper efficient. It uses reverse geocoding to
-                        estimate user's location and provide a wide range of
-                        accurate weather statistics.
+                        modern, full-featured, weather prediction and analysis
+                        software built from the ground up to be hyper efficient.
+                        It uses reverse geocoding to estimate user's location
+                        and provide a wide range of accurate weather statistics.
                     </p>
                     <p className="mt-4">
-                        WeatherMax is made possible by the amazing APIs
-                        provided by{' '}
+                        WeatherMax is made possible by the amazing APIs provided
+                        by{' '}
                         <a
                             className="underline hover:text-primary transition underline-offset-4"
                             href="https://locationiq.com/geocoding"
@@ -100,4 +123,3 @@ export default function SettingsFragment() {
         </main>
     );
 }
-

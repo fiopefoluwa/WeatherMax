@@ -1,6 +1,7 @@
 import { Location04Icon } from 'hugeicons-react';
 
 interface LargeWeatherCard {
+    unit: string;
     location: string;
     temperature: number;
     weatherType: string;
@@ -8,6 +9,7 @@ interface LargeWeatherCard {
     weatherStats: { title: string; value: string }[];
 }
 export default function LargeWeatherCard({
+    unit,
     location,
     temperature,
     weatherType,
@@ -28,7 +30,7 @@ export default function LargeWeatherCard({
                     <h3 className="text-3xl sm:text-5xl font-bold">
                         {temperature}
                     </h3>
-                    <span className="text-[#31A9ED] text-3xl">°C</span>
+                    <span className="text-[#31A9ED] text-3xl">°{unit}</span>
                 </p>
 
                 {/* TEMP TYPE + ICON */}
