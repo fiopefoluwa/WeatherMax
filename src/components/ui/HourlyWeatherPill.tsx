@@ -1,4 +1,5 @@
 interface HourlyWeatherPill {
+    unit: string;
     weatherIcon: string;
     weatherType: string;
     temperature: number;
@@ -7,6 +8,7 @@ interface HourlyWeatherPill {
 }
 
 export default function HourlyWeatherPill({
+    unit,
     weatherIcon,
     weatherType,
     temperature,
@@ -22,7 +24,7 @@ export default function HourlyWeatherPill({
                     className="w-16 h-16"
                 />
                 <p className="py-2 flex justify-between gap-2 items-center">
-                    <span>{temperature}°C</span>
+                    <span>{temperature}°{unit}</span>
                     <span className="text-sm text-[#949AB5] group-hover:text-white">
                         {weatherType}
                     </span>

@@ -1,5 +1,8 @@
+import { useContext } from 'react';
 import extractWeatherType from '../../utils/extractWeatherType';
 import HourlyWeatherPill from './HourlyWeatherPill';
+import { TempUnitContext } from '../../providers/temp/tempUnitContext';
+import TempConverter from '../../lib/converter';
 
 interface Hourly {
     weatherData: {
@@ -9,7 +12,11 @@ interface Hourly {
         time: string[];
     };
 }
+
 export default function HourlyWeather({ weatherData }: Hourly) {
+    const tempContext = useContext(TempUnitContext);
+    const converter = new TempConverter(tempContext.currentTempUnit);
+
     const twelveHourlyForecast = [];
     const currentHour = new Date().getHours();
     const matchingHour = weatherData['time'].find(
@@ -24,7 +31,7 @@ export default function HourlyWeather({ weatherData }: Hourly) {
         const hourStat = {
             weatherType: type,
             weatherIcon: `/weather/${icon}.svg`,
-            temperature: weatherData['temperature_2m'][i],
+            temperature: converter.convert(weatherData['temperature_2m'][i]),
             time: weatherData['time'][i],
         };
         // DEBUG: console.log(hourStat.weatherIcon);
@@ -44,6 +51,7 @@ export default function HourlyWeather({ weatherData }: Hourly) {
             >
                 {twelveHourlyForecast.map((stats, id) => (
                     <HourlyWeatherPill
+                        unit={converter.tempUnit}
                         key={id}
                         weatherType={stats.weatherType}
                         weatherIcon={stats.weatherIcon}
