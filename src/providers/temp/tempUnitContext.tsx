@@ -6,7 +6,7 @@ interface ITemperatureUnit {
     setCurrentTempUnit: Dispatch<SetStateAction<UNIT>>;
 }
 
-export const tempUnitContext = createContext<ITemperatureUnit>({
+export const TempUnitContext = createContext<ITemperatureUnit>({
     currentTempUnit: UNIT.CELSIUS,
-    setCurrentTempUnit: () => {}
+    setCurrentTempUnit: () => {},
 });
