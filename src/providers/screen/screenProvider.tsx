@@ -10,7 +10,7 @@ interface IScreenProviderProps {
 
 const ScreenProvider = ({ children }: IScreenProviderProps) => {
     const [currentScreen, setCurrentScreen] = useState(SCREEN.MY_LOCATION);
-    const [tempUnit, setTempUnit] = useState(UNIT.FAHRENHEIT);
+    const [tempUnit, setTempUnit] = useState(UNIT.CELSIUS);
 
     return (
         <ScreenContext.Provider value={{ currentScreen, setCurrentScreen }}>

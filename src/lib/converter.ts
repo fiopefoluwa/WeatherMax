@@ -7,11 +7,13 @@ class TempConverter {
     private unit: UNIT;
 
     private toFahrenheit(temp: number): number {
-        return parseInt(((9 / 5) * temp + 32).toFixed(2));
+        return Number(((9 / 5) * temp + 32).toFixed(2));
     }
 
+    // no need since the temps are already in celsius
     private toCelsius(temp: number): number {
-        return parseInt(((temp - 32) * (5 / 9)).toFixed(2));
+        // return Number(((temp - 32) * (5 / 9)).toFixed(2));
+        return temp;
     }
 
     constructor(unit: UNIT) {
