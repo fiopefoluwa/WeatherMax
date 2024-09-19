@@ -67,6 +67,7 @@ textarea:focus, input:focus{
     --lighter-border-color: #cbd5e0;
 }
 
+
 .light-theme body {
     background-color: var(--background-color);
     color: var(--text-color);
@@ -75,5 +76,4 @@ textarea:focus, input:focus{
 .light-theme .bg-card-bg {
     background-color: var(--card-bg-color);
 }
-
 

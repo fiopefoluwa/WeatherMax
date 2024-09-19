@@ -13,7 +13,7 @@ export default function Header() {
                     alt="top-bar-icon"
                     className="w-8 h-8 mr-2"
                 />
-                <span className="text-white text-xl">
+                <span className="header text-white text-xl">
                     Weather<span className="text-primary">Max</span>
                 </span>
             </h1>
